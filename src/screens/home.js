@@ -4,7 +4,7 @@ import { Button } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { Welcome } from "../constants/images";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   function renderTitle() {
     return (
       <View style={{ marginTop: 37.48, width: 179, height: 77 }}>
@@ -58,6 +58,7 @@ const Home = () => {
         <Button
           text="Check Out Bloggrs"
           backgroundColor="rgba(9, 132, 227, 0.2)"
+          onPress={() => navigation.navigate("Users")}
         />
         <Button icon text="My Resume" style={{ marginTop: 32 }} />
       </View>

@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { COLORS, FONTS } from "../constants";
 import { Profile } from "../constants/icons";
 
-const Button = ({ text, backgroundColor, style, icon }) => {
+const Button = ({ text, backgroundColor, style, icon, onPress }) => {
   return (
-    <View
+    <TouchableOpacity
       style={{
         marginTop: 40,
         width: 191,
@@ -17,6 +17,7 @@ const Button = ({ text, backgroundColor, style, icon }) => {
         flexDirection: "row",
         ...style,
       }}
+      onPress={onPress}
     >
       {icon && <Profile style={{ marginRight: 10.25 }} />}
       <Text
@@ -29,7 +30,7 @@ const Button = ({ text, backgroundColor, style, icon }) => {
       >
         {text}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
