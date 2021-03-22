@@ -1,5 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text, View } from "react-native";
+import { Button } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { Welcome } from "../constants/images";
 
@@ -54,7 +55,11 @@ const Home = () => {
   function renderButtons() {
     return (
       <View>
-        <Text>Button</Text>
+        <Button
+          text="Check Out Bloggrs"
+          backgroundColor="rgba(9, 132, 227, 0.2)"
+        />
+        <Button icon text="My Resume" style={{ marginTop: 32 }} />
       </View>
     );
   }
