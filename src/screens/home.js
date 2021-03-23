@@ -1,10 +1,16 @@
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { store } from "../../App";
+import { getUsers } from "../actions/user";
 import { Button } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { Welcome } from "../constants/images";
 
 const Home = ({ navigation }) => {
+  React.useEffect(() => {
+    store.dispatch(getUsers());
+  }, [store]);
+
   function renderTitle() {
     return (
       <View style={{ marginTop: 37.48, width: 179, height: 77 }}>
