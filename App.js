@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Users } from "./src/screens";
+import { Home, Posts, Users } from "./src/screens";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
@@ -33,6 +33,7 @@ const App = () => {
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Users" component={Users} />
+          <Stack.Screen name="Posts" component={Posts} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

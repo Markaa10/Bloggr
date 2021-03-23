@@ -1,6 +1,5 @@
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
-import { connect } from "react-redux";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { store } from "../../App";
 
 import { Navbar } from "../components";
@@ -8,7 +7,7 @@ import { COLORS, FONTS } from "../constants";
 import { HomeIcon, Profile } from "../constants/icons";
 import user from "../reducers/user";
 
-const Users = () => {
+const Users = ({ navigation }) => {
   const users = store.getState().users;
 
   function renderUser() {
@@ -57,12 +56,14 @@ const Users = () => {
       >
         {users.length ? (
           users.map((user) => (
-            <View
+            <TouchableOpacity
+              key={user.id}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 marginBottom: 24,
               }}
+              onPress={() => navigation.navigate("Posts", { userId: user.id })}
             >
               <View
                 style={{
@@ -102,7 +103,7 @@ const Users = () => {
                   {user.username}
                 </Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))
         ) : (
           <Text>No Users Yet</Text>

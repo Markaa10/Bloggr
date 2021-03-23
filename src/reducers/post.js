@@ -6,6 +6,6 @@ export default (posts = [], action) => {
       return action.payload;
 
     default:
-      posts;
+      return posts;
   }
 };
