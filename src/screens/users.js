@@ -114,7 +114,7 @@ const Users = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, paddingHorizontal: 24 }}>
-      <Navbar />
+      <Navbar text="Bloggrs" />
 
       {renderUser()}
     </View>

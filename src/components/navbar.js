@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import { COLORS, FONTS } from "../constants";
 import { HomeIcon } from "../constants/icons";
 
-const Navbar = () => {
+const Navbar = ({ text }) => {
   const navigation = useNavigation();
 
   return (
@@ -40,7 +40,7 @@ const Navbar = () => {
             marginLeft: 8,
           }}
         >
-          Bloggrs
+          {text}
         </Text>
       </View>
 
