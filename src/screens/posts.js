@@ -6,16 +6,8 @@ import { Navbar } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { DocumentIcon } from "../constants/icons";
 
-const Posts = ({ route }) => {
-  const { params } = route;
-
+const Posts = ({ userId }) => {
   const posts = store.getState().posts;
-
-  const userId = params.userId;
-
-  React.useEffect(() => {
-    store.dispatch(getPosts(userId));
-  }, [store]);
 
   function renderPosts() {
     const randomBackground = (postId) => {
@@ -214,7 +206,6 @@ const Posts = ({ route }) => {
                 marginBottom: 32,
               }}
             >
-              {console.log(post.id)}
               <View
                 style={{
                   width: 60,

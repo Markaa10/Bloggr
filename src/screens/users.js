@@ -63,7 +63,7 @@ const Users = ({ navigation }) => {
                 alignItems: "center",
                 marginBottom: 24,
               }}
-              onPress={() => navigation.navigate("Posts", { userId: user.id })}
+              onPress={() => navigation.navigate("BottomNavTab", { userId: user.id })}
             >
               <View
                 style={{

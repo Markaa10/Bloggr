@@ -8,6 +8,7 @@ import { reducers } from "./src/reducers";
 import { Provider } from "react-redux";
 import { getUsers } from "./src/actions/user";
 import thunk from "redux-thunk";
+import BottomNavTab from "./src/navigations/bottomNavTab";
 
 const theme = {
   ...DefaultTheme,
@@ -33,7 +34,7 @@ const App = () => {
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Users" component={Users} />
-          <Stack.Screen name="Posts" component={Posts} />
+          <Stack.Screen name="BottomNavTab" component={BottomNavTab} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
