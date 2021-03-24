@@ -233,7 +233,7 @@ const Posts = ({ userId }) => {
             </View>
           ))
         ) : (
-          <Text>No Posts</Text>
+          <Text style={{ alignSelf: "center", marginTop: 50 }}>No Posts</Text>
         )}
       </ScrollView>
     );
