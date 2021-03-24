@@ -5,6 +5,7 @@ import { getPosts } from "../actions/post";
 import { store } from "../../App";
 import { COLORS } from "../constants";
 import { DocumentIcon, GalleryIcon, TodoIcon } from "../constants/icons";
+import { getAlbums } from "../actions/gallery";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,10 +16,18 @@ const BottomNavTab = ({ route }) => {
   const tabBarOptions = {
     inactiveTintColor: COLORS.text,
     showLabel: false,
+    style: {
+      maxHeight: 72,
+      height: "100%",
+      shadowRadius: 15,
+      shadowColor: "rgba(143, 143, 143, 0.25)",
+      shadowOffset: 5,
+    },
   };
 
   React.useEffect(() => {
     store.dispatch(getPosts(userId));
+    store.dispatch(getAlbums(userId));
   }, [route]);
 
   return (
@@ -40,7 +49,6 @@ const BottomNavTab = ({ route }) => {
       </Tab.Screen>
       <Tab.Screen
         name="Gallery"
-        component={Gallery}
         options={{
           tabBarIcon: ({ focused }) => (
             <GalleryIcon
@@ -51,7 +59,9 @@ const BottomNavTab = ({ route }) => {
             />
           ),
         }}
-      />
+      >
+        {() => <Gallery userId={userId} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Todos"
         component={Todos}

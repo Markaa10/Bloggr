@@ -54,7 +54,9 @@ const Users = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         style={{ marginTop: 32 }}
       >
-        {users.length ? (
+        {!users.length ? (
+          <Text>No Users Yet</Text>
+        ) : (
           users.map((user) => (
             <TouchableOpacity
               key={user.id}
@@ -63,7 +65,9 @@ const Users = ({ navigation }) => {
                 alignItems: "center",
                 marginBottom: 24,
               }}
-              onPress={() => navigation.navigate("BottomNavTab", { userId: user.id })}
+              onPress={() =>
+                navigation.navigate("BottomNavTab", { userId: user.id })
+              }
             >
               <View
                 style={{
@@ -105,8 +109,6 @@ const Users = ({ navigation }) => {
               </View>
             </TouchableOpacity>
           ))
-        ) : (
-          <Text>No Users Yet</Text>
         )}
       </ScrollView>
     );

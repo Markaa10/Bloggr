@@ -1,12 +1,11 @@
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import { store } from "../../App";
-import { getPosts } from "../actions/post";
 import { Navbar } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { DocumentIcon } from "../constants/icons";
 
-const Posts = ({ userId }) => {
+const Posts = () => {
   const posts = store.getState().posts;
 
   function renderPosts() {
@@ -196,7 +195,9 @@ const Posts = ({ userId }) => {
         showsVerticalScrollIndicator={false}
         style={{ marginTop: 32 }}
       >
-        {posts ? (
+        {!posts.length ? (
+          <Text style={{ alignSelf: "center", marginTop: 50 }}>No Posts</Text>
+        ) : (
           posts.map((post) => (
             <View
               key={post.id}
@@ -232,8 +233,6 @@ const Posts = ({ userId }) => {
               </Text>
             </View>
           ))
-        ) : (
-          <Text style={{ alignSelf: "center", marginTop: 50 }}>No Posts</Text>
         )}
       </ScrollView>
     );
@@ -244,9 +243,10 @@ const Posts = ({ userId }) => {
       style={{
         flex: 1,
         paddingHorizontal: 24,
+        backgroundColor: COLORS.white,
       }}
     >
-      <Navbar text="Posts" />
+      <Navbar lightText='All' text="Posts" />
 
       {renderPosts()}
     </View>

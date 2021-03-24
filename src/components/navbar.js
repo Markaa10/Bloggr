@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import { COLORS, FONTS } from "../constants";
 import { HomeIcon } from "../constants/icons";
 
-const Navbar = ({ text }) => {
+const Navbar = ({ lightText, text }) => {
   const navigation = useNavigation();
 
   return (
@@ -29,7 +29,7 @@ const Navbar = ({ text }) => {
             lineHeight: 36.9,
           }}
         >
-          All
+          {lightText}
         </Text>
         <Text
           style={{
