@@ -1,10 +1,26 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { store } from "../../App";
+import { getComments } from "../actions/post";
 import { COLORS, FONTS } from "../constants";
 import { ArrowLeft, Profile } from "../constants/icons";
 
 const PostDetail = ({ navigation, route }) => {
   const post = route.params.post;
+
+  const postId = post.id;
+
+  React.useEffect(() => {
+    store.dispatch(getComments(postId));
+  }, []);
+
+  const comments = store.getState().comments;
 
   function renderHeader() {
     return (
@@ -29,8 +45,87 @@ const PostDetail = ({ navigation, route }) => {
   }
 
   function renderPostDetail() {
+    function renderComments() {
+      const renderItem = ({ item }) => {
+        return (
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "flex-start",
+              marginBottom: 12,
+              marginTop: 12,
+            }}
+          >
+            <View
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 14,
+                backgroundColor: "rgba(108, 92, 231, 0.2)",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 8,
+              }}
+            >
+              <Profile style={{ color: "#6C5CE7" }} />
+            </View>
+            <View>
+              <Text
+                style={{
+                  color: COLORS.textSeconday,
+                  ...FONTS.body2,
+                  lineHeight: 17,
+                  fontWeight: "600",
+                  marginBottom: 1,
+                }}
+              >
+                {item.name}
+              </Text>
+              <Text
+                style={{
+                  color: "#AAAAAA",
+                  ...FONTS.body3,
+                  lineHeight: 14,
+                  fontWeight: "600",
+                  marginBottom: 8,
+                }}
+              >
+                {item.email}
+              </Text>
+              <Text
+                style={{
+                  color: COLORS.text,
+                  ...FONTS.body2,
+                  lineHeight: 20,
+                  fontWeight: "600",
+                }}
+              >
+                {item.body}
+              </Text>
+            </View>
+          </View>
+        );
+      };
+
+      return comments ? (
+        <FlatList
+          data={comments}
+          renderItem={renderItem}
+          keyExtractor={(item) => `${item.id}`}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <Text style={{ alignSelf: "center", marginTop: 20, ...FONTS.h2 }}>
+          No comments for the post
+        </Text>
+      );
+    }
+
     return post ? (
-      <View style={{ marginTop: 22 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ marginTop: 22 }}
+      >
         <Text
           style={{
             color: COLORS.text,
@@ -104,9 +199,11 @@ const PostDetail = ({ navigation, route }) => {
         >
           All Comments
         </Text>
-      </View>
+
+        {renderComments()}
+      </ScrollView>
     ) : (
-      <Text> Loading...</Text>
+      <Text style={{ alignSelf: "center" }}> Loading...</Text>
     );
   }
 
