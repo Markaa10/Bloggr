@@ -1,4 +1,5 @@
 import React from "react";
+import { Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Gallery, Posts, Todos } from "../screens";
 import { getPosts } from "../actions/post";
@@ -11,7 +12,14 @@ const Tab = createBottomTabNavigator();
 
 const BottomNavTab = ({ route }) => {
   const { params } = route;
-  const userId = params.userId;
+  const userId = params.user.id;
+
+  React.useEffect(() => {
+    store.dispatch(getPosts(userId));
+    store.dispatch(getAlbums(userId));
+  }, [route]);
+
+  const posts = store.getState().posts;
 
   const tabBarOptions = {
     inactiveTintColor: COLORS.text,
@@ -24,11 +32,6 @@ const BottomNavTab = ({ route }) => {
       shadowOffset: 5,
     },
   };
-
-  React.useEffect(() => {
-    store.dispatch(getPosts(userId));
-    store.dispatch(getAlbums(userId));
-  }, [route]);
 
   return (
     <Tab.Navigator tabBarOptions={tabBarOptions}>
@@ -45,10 +48,12 @@ const BottomNavTab = ({ route }) => {
           ),
         }}
       >
-        {() => <Posts userID={userId} />}
+        {() => <Posts posts={posts} />}
       </Tab.Screen>
+
       <Tab.Screen
         name="Gallery"
+        component={Gallery}
         options={{
           tabBarIcon: ({ focused }) => (
             <GalleryIcon
@@ -59,9 +64,8 @@ const BottomNavTab = ({ route }) => {
             />
           ),
         }}
-      >
-        {() => <Gallery userId={userId} />}
-      </Tab.Screen>
+      />
+
       <Tab.Screen
         name="Todos"
         component={Todos}

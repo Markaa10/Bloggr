@@ -5,9 +5,7 @@ import { Navbar } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { DocumentIcon } from "../constants/icons";
 
-const Posts = () => {
-  const posts = store.getState().posts;
-
+const Posts = ({ posts }) => {
   function renderPosts() {
     const randomBackground = (postId) => {
       if (
@@ -196,7 +194,7 @@ const Posts = () => {
         style={{ marginTop: 32 }}
       >
         {!posts.length ? (
-          <Text style={{ alignSelf: "center", marginTop: 50 }}>No Posts</Text>
+          <Text style={{ alignSelf: "center" }}>No Posts</Text>
         ) : (
           posts.map((post) => (
             <View
@@ -246,7 +244,7 @@ const Posts = () => {
         backgroundColor: COLORS.white,
       }}
     >
-      <Navbar lightText='All' text="Posts" />
+      <Navbar lightText="All" text="Posts" />
 
       {renderPosts()}
     </View>

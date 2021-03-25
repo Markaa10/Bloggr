@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { store } from "../../App";
+import { getPosts } from "../actions/post";
 
 import { Navbar } from "../components";
 import { COLORS, FONTS } from "../constants";
@@ -65,9 +66,7 @@ const Users = ({ navigation }) => {
                 alignItems: "center",
                 marginBottom: 24,
               }}
-              onPress={() =>
-                navigation.navigate("BottomNavTab", { userId: user.id })
-              }
+              onPress={() => navigation.navigate("BottomNavTab", { user })}
             >
               <View
                 style={{
@@ -85,6 +84,7 @@ const Users = ({ navigation }) => {
                   style={{ color: randomProfile(user.id) }}
                 />
               </View>
+
               <View style={{ marginLeft: 12 }}>
                 <Text
                   style={{
