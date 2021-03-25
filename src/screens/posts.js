@@ -1,11 +1,13 @@
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { store } from "../../App";
 import { Navbar } from "../components";
 import { COLORS, FONTS } from "../constants";
 import { DocumentIcon } from "../constants/icons";
 
-const Posts = ({ posts }) => {
+const Posts = ({ navigation }) => {
+  const posts = store.getState().posts;
+
   function renderPosts() {
     const randomBackground = (postId) => {
       if (
@@ -197,13 +199,14 @@ const Posts = ({ posts }) => {
           <Text style={{ alignSelf: "center" }}>No Posts</Text>
         ) : (
           posts.map((post) => (
-            <View
+            <TouchableOpacity
               key={post.id}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 marginBottom: 32,
               }}
+              onPress={() => navigation.navigate("PostDetail", { post })}
             >
               <View
                 style={{
@@ -229,7 +232,7 @@ const Posts = ({ posts }) => {
               >
                 {post.title}
               </Text>
-            </View>
+            </TouchableOpacity>
           ))
         )}
       </ScrollView>

@@ -7,8 +7,10 @@ import Plus from "../../assets/icons/plus.svg";
 import Check from "../../assets/icons/check.svg";
 import TrashAlt from "../../assets/icons/trash-alt.svg";
 import EmptyTodo from "../../assets/icons/empty-todo.svg";
+import ArrowLeft from "../../assets/icons/arrow-left.svg";
 
 export {
+  ArrowLeft,
   EmptyTodo,
   Check,
   TrashAlt,

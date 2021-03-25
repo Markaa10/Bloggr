@@ -69,7 +69,7 @@ const Completed = () => {
       );
     };
 
-    return !completedTodos ? (
+    return completedTodos ? (
       <FlatList
         data={completedTodos}
         renderItem={renderItem}

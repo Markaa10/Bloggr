@@ -8,6 +8,7 @@ import { COLORS } from "../constants";
 import { DocumentIcon, GalleryIcon, TodoIcon } from "../constants/icons";
 import { getAlbums } from "../actions/gallery";
 import { getTodos } from "../actions/todo";
+import { PostStackScreen } from "./";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +21,6 @@ const BottomNavTab = ({ route }) => {
     store.dispatch(getAlbums(userId));
     store.dispatch(getTodos(userId));
   }, [route]);
-
-  const posts = store.getState().posts;
 
   const tabBarOptions = {
     inactiveTintColor: COLORS.text,
@@ -38,7 +37,8 @@ const BottomNavTab = ({ route }) => {
   return (
     <Tab.Navigator initialRouteName="Posts" tabBarOptions={tabBarOptions}>
       <Tab.Screen
-        name="Posts"
+        name="PostStackScreen"
+        component={PostStackScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <DocumentIcon
@@ -49,9 +49,7 @@ const BottomNavTab = ({ route }) => {
             />
           ),
         }}
-      >
-        {() => <Posts posts={posts} />}
-      </Tab.Screen>
+      />
 
       <Tab.Screen
         name="Gallery"
