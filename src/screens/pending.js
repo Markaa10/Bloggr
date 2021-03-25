@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { store } from "../../App";
 import { COLORS, FONTS } from "../constants";
 import { Check, TrashAlt } from "../constants/icons";
@@ -10,10 +10,9 @@ const Pending = () => {
   const remainingTodos = todos.filter((todo) => todo.completed === false);
 
   function renderTodos() {
-    return remainingTodos.length ? (
-      remainingTodos.map((remainingTodo) => (
+    const renderItem = ({ item }) => {
+      return (
         <View
-          key={remainingTodo.id}
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -30,7 +29,7 @@ const Pending = () => {
               width: 143,
             }}
           >
-            {remainingTodo.title}
+            {item.title}
           </Text>
           <View
             style={{
@@ -66,7 +65,16 @@ const Pending = () => {
             </View>
           </View>
         </View>
-      ))
+      );
+    };
+
+    return remainingTodos ? (
+      <FlatList
+        data={remainingTodos}
+        renderItem={renderItem}
+        keyExtractor={(item) => `${item.id}`}
+        showsVerticalScrollIndicator={false}
+      />
     ) : (
       <Text>No Todos Remaining</Text>
     );
