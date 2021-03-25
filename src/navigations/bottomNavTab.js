@@ -7,6 +7,7 @@ import { store } from "../../App";
 import { COLORS } from "../constants";
 import { DocumentIcon, GalleryIcon, TodoIcon } from "../constants/icons";
 import { getAlbums } from "../actions/gallery";
+import { getTodos } from "../actions/todo";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,7 @@ const BottomNavTab = ({ route }) => {
   React.useEffect(() => {
     store.dispatch(getPosts(userId));
     store.dispatch(getAlbums(userId));
+    store.dispatch(getTodos(userId));
   }, [route]);
 
   const posts = store.getState().posts;

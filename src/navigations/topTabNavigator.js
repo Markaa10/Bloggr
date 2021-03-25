@@ -6,54 +6,32 @@ import { COLORS, FONTS } from "../constants";
 
 const Tab = createMaterialTopTabNavigator();
 
-const TopTabNavigator = () => {
+const TopTabNavigator = ({ todos }) => {
   const tabBarOptions = {
     style: {
       elevation: 0,
       backgroundColor: COLORS.white,
       marginTop: 40,
+      marginBottom: 32,
     },
     labelStyle: {
       color: COLORS.primary,
       ...FONTS.body2,
       fontWeight: "600",
       lineHeight: 20,
-      textAlign: "left",
+      marginBottom: 10,
+      alignSelf: "center",
+      textTransform: "capitalize",
     },
     indicatorStyle: {
       backgroundColor: "rgba(9, 132, 227, 0.2)",
-      width: 123,
       height: 60,
       borderRadius: 21,
     },
-    indicatorContainerStyle: { alignItems: "center" },
   };
 
   return (
-    <Tab.Navigator
-      initialRouteName="Pending"
-      tabBarOptions={{
-        style: {
-          elevation: 0,
-          backgroundColor: COLORS.white,
-          marginTop: 40,
-        },
-        labelStyle: {
-          color: COLORS.primary,
-          ...FONTS.body2,
-          fontWeight: "600",
-          lineHeight: 20,
-          marginBottom: 10,
-          alignSelf: "center",
-          textTransform: "capitalize",
-        },
-        indicatorStyle: {
-          backgroundColor: "rgba(9, 132, 227, 0.2)",
-          height: 60,
-          borderRadius: 21,
-        },
-      }}
-    >
+    <Tab.Navigator initialRouteName="Pending" tabBarOptions={tabBarOptions}>
       <Tab.Screen
         name="Pending"
         component={Pending}

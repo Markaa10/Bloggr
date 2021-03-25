@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { store } from "../../App";
 import { Navbar } from "../components";
 import { COLORS } from "../constants";
 import { Plus } from "../constants/icons";
 import { TopTabNavigator } from "../navigations";
 
 const Todos = () => {
+  const todos = store.getState().todos;
+
   function renderFAB() {
     return (
       <View
@@ -36,7 +39,7 @@ const Todos = () => {
     >
       <Navbar lightText="Your" text="Todo List" />
 
-      <TopTabNavigator />
+      <TopTabNavigator todos={todos} />
 
       {renderFAB()}
     </View>
