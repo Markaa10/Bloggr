@@ -19,7 +19,9 @@ const Button = ({ text, backgroundColor, style, icon, onPress }) => {
       }}
       onPress={onPress}
     >
-      {icon && <Profile style={{ marginRight: 10.25 }} />}
+      {icon && (
+        <Profile style={{ color: COLORS.primary, marginRight: 10.25 }} />
+      )}
       <Text
         style={{
           color: COLORS.primary,

@@ -8,7 +8,7 @@ import { reducers } from "./src/reducers";
 import { Provider } from "react-redux";
 import { getUsers } from "./src/actions/user";
 import thunk from "redux-thunk";
-import BottomNavTab from "./src/navigations/bottomNavTab";
+import { BottomNavTab } from "./src/navigations";
 
 const theme = {
   ...DefaultTheme,

@@ -34,7 +34,7 @@ const BottomNavTab = ({ route }) => {
   };
 
   return (
-    <Tab.Navigator tabBarOptions={tabBarOptions}>
+    <Tab.Navigator initialRouteName="Posts" tabBarOptions={tabBarOptions}>
       <Tab.Screen
         name="Posts"
         options={{

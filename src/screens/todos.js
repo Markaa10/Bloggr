@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Navbar } from "../components";
 import { COLORS } from "../constants";
 import { Plus } from "../constants/icons";
+import { TopTabNavigator } from "../navigations";
 
 const Todos = () => {
   function renderFAB() {
@@ -34,6 +35,8 @@ const Todos = () => {
       style={{ flex: 1, paddingHorizontal: 24, backgroundColor: COLORS.white }}
     >
       <Navbar lightText="Your" text="Todo List" />
+
+      <TopTabNavigator />
 
       {renderFAB()}
     </View>
