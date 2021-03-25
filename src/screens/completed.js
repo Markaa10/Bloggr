@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, FlatList } from "react-native";
 import { store } from "../../App";
 import { COLORS, FONTS } from "../constants";
-import { Check, TrashAlt } from "../constants/icons";
+import { Check, TrashAlt, EmptyTodo } from "../constants/icons";
 
 const Completed = () => {
   const todos = store.getState().todos;
@@ -69,7 +69,7 @@ const Completed = () => {
       );
     };
 
-    return completedTodos ? (
+    return !completedTodos ? (
       <FlatList
         data={completedTodos}
         renderItem={renderItem}
@@ -77,7 +77,38 @@ const Completed = () => {
         showsVerticalScrollIndicator={false}
       />
     ) : (
-      <Text>No Todos Completed</Text>
+      <View
+        style={{
+          marginTop: 112,
+          alignItems: "center",
+        }}
+      >
+        <EmptyTodo />
+        <Text
+          style={{
+            color: COLORS.text,
+            ...FONTS.h2,
+            lineHeight: 29,
+            fontWeight: "bold",
+            marginTop: 12.65,
+          }}
+        >
+          Nothing to See Here
+        </Text>
+        <Text
+          style={{
+            color: COLORS.textSeconday,
+            ...FONTS.body2,
+            lineHeight: 17,
+            fontWeight: "600",
+            width: 211,
+            textAlign: "center",
+            marginTop: 6,
+          }}
+        >
+          The tasks that you’ve completed will appear here
+        </Text>
+      </View>
     );
   }
 
