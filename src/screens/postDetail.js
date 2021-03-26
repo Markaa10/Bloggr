@@ -46,7 +46,7 @@ const PostDetail = ({ navigation, route }) => {
 
   function renderPostDetail() {
     function renderComments() {
-      const renderItem = ({ item }) => {
+      const renderItem = (comment) => {
         return (
           <View
             style={{
@@ -79,7 +79,7 @@ const PostDetail = ({ navigation, route }) => {
                   marginBottom: 1,
                 }}
               >
-                {item.name}
+                {comment.name}
               </Text>
               <Text
                 style={{
@@ -90,7 +90,7 @@ const PostDetail = ({ navigation, route }) => {
                   marginBottom: 8,
                 }}
               >
-                {item.email}
+                {comment.email}
               </Text>
               <Text
                 style={{
@@ -100,7 +100,7 @@ const PostDetail = ({ navigation, route }) => {
                   fontWeight: "600",
                 }}
               >
-                {item.body}
+                {comment.body}
               </Text>
             </View>
           </View>
@@ -108,12 +108,7 @@ const PostDetail = ({ navigation, route }) => {
       };
 
       return comments ? (
-        <FlatList
-          data={comments}
-          renderItem={renderItem}
-          keyExtractor={(item) => `${item.id}`}
-          showsVerticalScrollIndicator={false}
-        />
+        comments.map((comment) => renderItem(comment))
       ) : (
         <Text style={{ alignSelf: "center", marginTop: 20, ...FONTS.h2 }}>
           No comments for the post
