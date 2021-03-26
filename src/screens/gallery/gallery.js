@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
-import { store } from "../../App";
-import { Navbar } from "../components";
-import { COLORS, FONTS, SIZES } from "../constants";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { store } from "../../../App";
+import { Navbar } from "../../components";
+import { COLORS, FONTS } from "../../constants";
 
-const Gallery = () => {
+const Gallery = ({ navigation }) => {
   const albums = store.getState().albums;
 
   function renderAlbums() {
@@ -29,7 +29,8 @@ const Gallery = () => {
       };
 
       return (
-        <View
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Photos")}
           style={{
             width: 155,
             marginRight: index % 2 === 0 ? 17 : 0,
@@ -58,7 +59,7 @@ const Gallery = () => {
           >
             {item.title}
           </Text>
-        </View>
+        </TouchableOpacity>
       );
     };
 

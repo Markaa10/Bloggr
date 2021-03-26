@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { store } from "../../App";
-import { getComments } from "../actions/post";
-import { COLORS, FONTS } from "../constants";
-import { ArrowLeft, Profile } from "../constants/icons";
+import { store } from "../../../App";
+import { getComments } from "../../actions/post";
+import { COLORS, FONTS } from "../../constants";
+import { ArrowLeft, Profile } from "../../constants/icons";
 
 const PostDetail = ({ navigation, route }) => {
   const post = route.params.post;
@@ -18,7 +18,7 @@ const PostDetail = ({ navigation, route }) => {
 
   React.useEffect(() => {
     store.dispatch(getComments(postId));
-  }, []);
+  }, [route]);
 
   const comments = store.getState().comments;
 
@@ -49,6 +49,7 @@ const PostDetail = ({ navigation, route }) => {
       const renderItem = (comment) => {
         return (
           <View
+            key={comment.id}
             style={{
               flexDirection: "row",
               alignItems: "flex-start",

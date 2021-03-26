@@ -1,9 +1,9 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { store } from "../../App";
-import { Navbar } from "../components";
-import { COLORS, FONTS } from "../constants";
-import { DocumentIcon } from "../constants/icons";
+import { store } from "../../../App";
+import { Navbar } from "../../components";
+import { COLORS, FONTS } from "../../constants";
+import { DocumentIcon } from "../../constants/icons";
 
 const Posts = ({ navigation }) => {
   const posts = store.getState().posts;

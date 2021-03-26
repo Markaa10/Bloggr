@@ -8,7 +8,7 @@ import { COLORS } from "../constants";
 import { DocumentIcon, GalleryIcon, TodoIcon } from "../constants/icons";
 import { getAlbums } from "../actions/gallery";
 import { getTodos } from "../actions/todo";
-import { PostStackScreen } from "./";
+import { GalleryStackScreen, PostStackScreen } from "./";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,8 +52,8 @@ const BottomNavTab = ({ route }) => {
       />
 
       <Tab.Screen
-        name="Gallery"
-        component={Gallery}
+        name="GalleryStackScreen"
+        component={GalleryStackScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <GalleryIcon
