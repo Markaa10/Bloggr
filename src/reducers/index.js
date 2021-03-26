@@ -4,6 +4,7 @@ import posts from "./post";
 import comments from "./comments";
 import albums from "./gallery";
 import todos from "./todo";
+import photos from "./photos";
 
 export const reducers = combineReducers({
   users,
@@ -11,4 +12,5 @@ export const reducers = combineReducers({
   albums,
   todos,
   comments,
+  photos,
 });
