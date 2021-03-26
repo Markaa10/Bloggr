@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Posts, Users } from "./src/screens";
+import { Home, Posts, Resume, Users } from "./src/screens";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
@@ -33,6 +33,7 @@ const App = () => {
           initialRouteName={"Home"}
         >
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Resume" component={Resume} />
           <Stack.Screen name="Users" component={Users} />
           <Stack.Screen name="BottomNavTab" component={BottomNavTab} />
         </Stack.Navigator>

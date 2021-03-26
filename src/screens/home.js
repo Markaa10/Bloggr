@@ -66,7 +66,12 @@ const Home = ({ navigation }) => {
           backgroundColor="rgba(9, 132, 227, 0.2)"
           onPress={() => navigation.navigate("Users")}
         />
-        <Button icon text="My Resume" style={{ marginTop: 32 }} />
+        <Button
+          icon
+          text="My Resume"
+          style={{ marginTop: 32 }}
+          onPress={() => navigation.navigate("Resume")}
+        />
       </View>
     );
   }

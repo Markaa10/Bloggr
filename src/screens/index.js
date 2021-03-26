@@ -1,4 +1,5 @@
 export { default as Home } from "./home";
+export { default as Resume } from "./resume";
 export { default as Users } from "./users";
 export { default as Posts } from "./posts/posts";
 export { default as PostDetail } from "./posts/postDetail";
