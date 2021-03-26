@@ -6,6 +6,7 @@ import { COLORS, FONTS } from "../../constants";
 import { ArrowLeft } from "../../constants/icons";
 
 const Photos = ({ navigation, route }) => {
+  const album = route.params.item;
   const albumId = route.params.item.id;
 
   React.useEffect(() => {
@@ -33,6 +34,24 @@ const Photos = ({ navigation, route }) => {
           Go Back
         </Text>
       </TouchableOpacity>
+    );
+  }
+
+  function renderTitle() {
+    return (
+      <View>
+        <Text
+          style={{
+            marginTop: 22,
+            color: COLORS.text,
+            ...FONTS.h1,
+            lineHeight: 39,
+            fontWeight: "bold",
+          }}
+        >
+          {album.title}
+        </Text>
+      </View>
     );
   }
 
@@ -113,6 +132,8 @@ const Photos = ({ navigation, route }) => {
       style={{ flex: 1, paddingHorizontal: 24, backgroundColor: COLORS.white }}
     >
       {renderHeader()}
+
+      {renderTitle()}
 
       {renderPhotos()}
     </View>
