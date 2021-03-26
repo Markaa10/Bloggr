@@ -30,7 +30,7 @@ const Gallery = ({ navigation }) => {
 
       return (
         <TouchableOpacity
-          onPress={() => navigation.navigate("Photos")}
+          onPress={() => navigation.navigate("Photos", { item })}
           style={{
             width: 155,
             marginRight: index % 2 === 0 ? 17 : 0,
