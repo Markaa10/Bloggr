@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, FlatList } from "react-native";
-import { store } from "../../App";
-import { COLORS, FONTS } from "../constants";
-import { Check, TrashAlt, EmptyTodo } from "../constants/icons";
+import { store } from "../../../App";
+import { COLORS, FONTS } from "../../constants";
+import { Check, TrashAlt, EmptyTodo } from "../../constants/icons";
 
 const Completed = () => {
   const todos = store.getState().todos;

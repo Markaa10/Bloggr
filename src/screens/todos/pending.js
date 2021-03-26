@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, FlatList } from "react-native";
-import { store } from "../../App";
-import { COLORS, FONTS } from "../constants";
-import { Check, TrashAlt } from "../constants/icons";
+import { store } from "../../../App";
+import { COLORS, FONTS } from "../../constants";
+import { Check, TrashAlt } from "../../constants/icons";
 
 const Pending = () => {
   const todos = store.getState().todos;
