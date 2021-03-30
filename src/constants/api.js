@@ -11,3 +11,5 @@ export const fetchAlbums = (id) => API.get(`albums?userId=${id}`);
 export const fetchPhotos = (id) => API.get(`photos?albumId=${id}`);
 
 export const fetchTodos = (id) => API.get(`todos?userId=${id}`);
+export const completeTodo = (id, completeTodo) =>
+  API.patch(`todos?userId=${id}`, completeTodo);
