@@ -1,12 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {HomeScreen} from '../screens';
 
 const AppNavigation = () => {
-  return (
-    <View>
-      <Text>AppNavigation</Text>
-    </View>
-  );
+  return <HomeScreen />;
 };
 
 export default AppNavigation;
