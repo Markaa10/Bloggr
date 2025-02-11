@@ -1,1 +1,11 @@
+export {default as Bootstrap} from './bootstrap.svg';
+export {default as Css} from './css.svg';
+export {default as Flutter} from './flutter.svg';
+export {default as Home} from './home.svg';
+export {default as Html} from './html.svg';
+export {default as Illustrator} from './illustrator.svg';
+export {default as Js} from './js.svg';
+export {default as Laravel} from './laravel.svg';
+export {default as Php} from './php.svg';
 export {default as Profile} from './profile.svg';
+export {default as Vue} from './vue.svg';

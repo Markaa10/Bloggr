@@ -21,19 +21,28 @@ const Button = ({
   prefixIcon,
   ...props
 }: Readonly<ButtonProps>) => {
-  const variantStyle =
-    variant === 'filled'
-      ? styles.filled
-      : variant === 'outlined'
-      ? styles.outlined
-      : styles.text;
+  const variantStyle = () => {
+    switch (variant) {
+      case 'filled':
+        return styles.filled;
+
+      case 'outlined':
+        return styles.outlined;
+
+      case 'text':
+        return styles.text;
+
+      default:
+        return styles.filled;
+    }
+  };
 
   return (
     <TouchableOpacity
       {...props}
       style={[
         styles.container,
-        variantStyle,
+        variantStyle(),
         prefixIcon ? styles.prefixIcon : null,
         props?.style,
       ]}>

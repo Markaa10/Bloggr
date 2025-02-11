@@ -1,41 +1,50 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {Profile} from '../../assets/icons';
 import {HomeIllustration} from '../../assets/illustrations';
 import {colors, fonts, sizes} from '../../assets/theme';
 import {Button} from '../components';
 
 const HomeScreen = () => {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <HomeIllustration
-        width={sizes.appWidth(20.44581)}
-        height={sizes.appHeight(16.15719)}
-        style={styles.illustartion}
-      />
+  const navigation = useNavigation();
 
-      <View style={styles.welcomeContainer}>
-        <View style={styles.text}>
-          <Text style={styles.title}>
-            Welcome to <Text style={styles.titleBold}>Bloggr</Text>
-          </Text>
-          <Text style={styles.body}>
-            Bloggr allows you to disover your favorite bloggers and follow their
-            writings and albums. We also have a dedicated todo application to
-            keep you productive.
-          </Text>
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        contentContainerStyle={{alignItems: 'center'}}
+        showsVerticalScrollIndicator={false}>
+        <HomeIllustration
+          width={sizes.appWidth(20.44581)}
+          height={sizes.appHeight(16.15719)}
+          style={styles.illustartion}
+        />
+
+        <View style={styles.welcomeContainer}>
+          <View style={styles.text}>
+            <Text style={styles.title}>
+              Welcome to <Text style={styles.titleBold}>Bloggr</Text>
+            </Text>
+            <Text style={styles.body}>
+              Bloggr allows you to disover your favorite bloggers and follow
+              their writings and albums. We also have a dedicated todo
+              application to keep you productive.
+            </Text>
+          </View>
+
+          <Button text="Check Out Bloggrs" style={styles.button} />
         </View>
 
-        <Button text="Check Out Bloggrs" style={styles.button} />
-      </View>
-
-      <Button
-        prefixIcon={<Profile />}
-        variant="text"
-        text="My Resume"
-        style={styles.resumeButton}
-      />
-    </ScrollView>
+        <Button
+          onPress={() => navigation.navigate('Resume')}
+          prefixIcon={<Profile />}
+          variant="text"
+          text="My Resume"
+          style={styles.resumeButton}
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -44,6 +53,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   resumeButton: {
     marginTop: sizes.appHeight(2),
+    marginBottom: sizes.appHeight(4.44),
     gap: sizes.appWidth(0.5),
   },
   button: {
