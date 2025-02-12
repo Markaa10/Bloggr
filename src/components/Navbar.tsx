@@ -16,7 +16,7 @@ const Navbar = ({lightText, text}: Readonly<NavbarProps>) => {
         <Text style={styles.text}>{text}</Text>
       </View>
 
-      <Home onPress={() => navigation.goBack()} />
+      <Home onPress={() => navigation.navigate('Home')} />
     </View>
   );
 };
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 40,
     justifyContent: 'space-between',
   },

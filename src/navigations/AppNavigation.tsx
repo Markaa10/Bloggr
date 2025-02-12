@@ -3,10 +3,23 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {HomeScreen, MyResumeScreen} from '../screens';
+import {
+  AllBloggersScreen,
+  HomeScreen,
+  MyResumeScreen,
+  UserPostsScreen,
+} from '../screens';
 
 const RootStack = createNativeStackNavigator({
-  screens: {Home: HomeScreen, Resume: MyResumeScreen},
+  screens: {
+    Home: HomeScreen,
+    Resume: MyResumeScreen,
+    AllBloggrs: AllBloggersScreen,
+    AllPosts: {
+      screen: UserPostsScreen,
+      initialParams: {userId: 1},
+    },
+  },
   screenOptions: {headerShown: false},
 });
 

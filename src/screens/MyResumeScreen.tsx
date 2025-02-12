@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
@@ -14,7 +14,7 @@ import {
 } from '../../assets/icons';
 import {Me, Sxg, Vidyasadan} from '../../assets/images';
 import {colors, sizes} from '../../assets/theme';
-import {Button, Navbar} from '../components';
+import {Button, Navbar, ResumeCard} from '../components';
 
 const MyResumeScreen = () => {
   return (
@@ -31,14 +31,7 @@ const MyResumeScreen = () => {
         </View>
 
         <Education />
-        <Button
-          text="Go to App"
-          style={{
-            marginVertical: sizes.appHeight(3.81),
-            minWidth: sizes.appWidth(11.9375),
-            alignSelf: 'center',
-          }}
-        />
+        <Button text="Go to App" style={styles.button} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -47,6 +40,11 @@ const MyResumeScreen = () => {
 export default MyResumeScreen;
 
 const styles = StyleSheet.create({
+  button: {
+    marginVertical: sizes.appHeight(3.81),
+    minWidth: sizes.appWidth(11.9375),
+    alignSelf: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: colors.white,
@@ -179,40 +177,6 @@ const Education = () => {
           </View>
         </View>
       </View>
-    </View>
-  );
-};
-
-type ResumeCardProps = {title?: string; subTitle?: string; icon: ReactNode};
-const ResumeCard = ({subTitle, title, icon}: Readonly<ResumeCardProps>) => {
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: sizes.appWidth(0.75),
-      }}>
-      {icon}
-      {title ? (
-        <View style={{flexDirection: 'column', gap: sizes.appHeight(0.38)}}>
-          <Text
-            style={{
-              color: '#333',
-              fontSize: sizes.appWidth(1),
-              fontWeight: '600',
-            }}>
-            {title}
-          </Text>
-          <Text
-            style={{
-              color: colors.grey['400'],
-              fontSize: sizes.appWidth(0.875),
-              fontWeight: '600',
-            }}>
-            {subTitle}
-          </Text>
-        </View>
-      ) : null}
     </View>
   );
 };

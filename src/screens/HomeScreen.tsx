@@ -33,7 +33,11 @@ const HomeScreen = () => {
             </Text>
           </View>
 
-          <Button text="Check Out Bloggrs" style={styles.button} />
+          <Button
+            onPress={() => navigation.navigate('AllBloggrs')}
+            text="Check Out Bloggrs"
+            style={styles.button}
+          />
         </View>
 
         <Button
