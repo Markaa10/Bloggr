@@ -1,5 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Pressable, StyleSheet, Text, View} from 'react-native';
 import {Document} from '../../assets/icons';
 import {colors, sizes} from '../../assets/theme';
 import {IconContainer, Navbar} from '../components';
@@ -8,9 +9,12 @@ import {useFetchUserPosts} from '../hooks';
 const UserPostsScreen = ({route}: {route: {params: {userId: number}}}) => {
   const {data, isLoading, refetch} = useFetchUserPosts(route.params.userId);
 
+  const navigation = useNavigation();
+
   const renderItem = item => {
     return (
-      <View
+      <Pressable
+        onPress={() => navigation.navigate('PostDetails', {postId: item.id})}
         style={{
           gap: sizes.appWidth(1.13),
           flexDirection: 'row',
@@ -26,7 +30,7 @@ const UserPostsScreen = ({route}: {route: {params: {userId: number}}}) => {
           }}>
           {item.title}
         </Text>
-      </View>
+      </Pressable>
     );
   };
 

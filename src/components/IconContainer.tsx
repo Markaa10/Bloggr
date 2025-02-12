@@ -1,15 +1,17 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {StyleSheet, View, ViewProps} from 'react-native';
 import {sizes} from '../../assets/theme';
 
 interface IconContainerProps extends ViewProps {
-  icon: ReactNode;
+  icon: any;
+  size?: number;
   itemId: number;
 }
 
 const IconContainer = ({
   itemId = 1,
   icon: Icon,
+  size = 24,
   ...props
 }: Readonly<IconContainerProps>) => {
   const getBg = () => {
@@ -50,7 +52,7 @@ const IconContainer = ({
 
   return (
     <View style={[styles.container, {backgroundColor: getBg()}, props?.style]}>
-      <Icon style={{color: getUserColor()}} />
+      <Icon width={size} height={size} style={{color: getUserColor()}} />
     </View>
   );
 };

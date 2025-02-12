@@ -7,6 +7,7 @@ import {
   AllBloggersScreen,
   HomeScreen,
   MyResumeScreen,
+  PostDetailsScreen,
   UserPostsScreen,
 } from '../screens';
 
@@ -18,6 +19,10 @@ const RootStack = createNativeStackNavigator({
     AllPosts: {
       screen: UserPostsScreen,
       initialParams: {userId: 1},
+    },
+    PostDetails: {
+      screen: PostDetailsScreen,
+      initialParams: {postId: 1},
     },
   },
   screenOptions: {headerShown: false},

@@ -1,3 +1,4 @@
+export {default as ArrowLeft} from './arrow-left.svg';
 export {default as Bootstrap} from './bootstrap.svg';
 export {default as Css} from './css.svg';
 export {default as Document} from './document.svg';
