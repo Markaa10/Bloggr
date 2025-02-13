@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {FlatList, Pressable, StyleSheet, Text, View} from 'react-native';
-import {Document} from '../../assets/icons';
-import {colors, sizes} from '../../assets/theme';
-import {IconContainer, Navbar} from '../components';
-import {useFetchUserPosts} from '../hooks';
+import {Document} from '../../../../assets/icons';
+import {colors, sizes} from '../../../../assets/theme';
+import {IconContainer, Navbar} from '../../../components';
+import {useFetchUserPosts} from '../../../hooks';
 
 const UserPostsScreen = ({route}: {route: {params: {userId: number}}}) => {
   const {data, isLoading, refetch} = useFetchUserPosts(route.params.userId);

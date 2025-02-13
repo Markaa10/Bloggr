@@ -2,7 +2,7 @@ import {useQuery} from '@tanstack/react-query';
 
 export const useFetchUserPosts = (userId: number) => {
   const userPosts = useQuery({
-    queryKey: ['FETCH_USER_POSTS'],
+    queryKey: ['FETCH_USER_POSTS', userId],
     queryFn: async () => {
       try {
         const response = await fetch(

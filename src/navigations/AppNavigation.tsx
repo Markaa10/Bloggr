@@ -3,29 +3,29 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {
-  AllBloggersScreen,
-  HomeScreen,
-  MyResumeScreen,
-  PostDetailsScreen,
-  UserPostsScreen,
-} from '../screens';
+import {BottomTabs} from './BottomTabs';
+import {HomeNavigation} from './HomeNavigation';
 
 const RootStack = createNativeStackNavigator({
   screens: {
-    Home: HomeScreen,
-    Resume: MyResumeScreen,
-    AllBloggrs: AllBloggersScreen,
-    AllPosts: {
-      screen: UserPostsScreen,
-      initialParams: {userId: 1},
-    },
-    PostDetails: {
-      screen: PostDetailsScreen,
-      initialParams: {postId: 1},
-    },
+    Welcome: HomeNavigation,
+    BottomTabs: {screen: BottomTabs, initialParams: {userId: undefined}},
   },
   screenOptions: {headerShown: false},
+  // screens: {
+  //   Home: HomeScreen,
+  //   Resume: MyResumeScreen,
+  //   AllBloggrs: AllBloggersScreen,
+  //   AllPosts: {
+  //     screen: UserPostsScreen,
+  //     initialParams: {userId: 1},
+  //   },
+  //   PostDetails: {
+  //     screen: PostDetailsScreen,
+  //     initialParams: {postId: 1},
+  //   },
+  // },
+  // screenOptions: {headerShown: false},
 });
 
 const RootNavigation = createStaticNavigation(RootStack);

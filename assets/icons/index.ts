@@ -1,5 +1,7 @@
+export {default as Album} from './album.svg';
 export {default as ArrowLeft} from './arrow-left.svg';
 export {default as Bootstrap} from './bootstrap.svg';
+export {default as CheckSquare} from './check-square.svg';
 export {default as Css} from './css.svg';
 export {default as Document} from './document.svg';
 export {default as Flutter} from './flutter.svg';

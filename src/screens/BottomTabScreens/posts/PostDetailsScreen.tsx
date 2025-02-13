@@ -1,11 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ArrowLeft, User} from '../../assets/icons';
-import {colors, fonts, sizes} from '../../assets/theme';
-import {IconContainer} from '../components';
-import {useFetchPostDetails} from '../hooks';
+import {User} from '../../../../assets/icons';
+import {colors, fonts, sizes} from '../../../../assets/theme';
+import {BackButton, IconContainer} from '../../../components';
+import {useFetchPostDetails} from '../../../hooks';
 
 const PostDetailsScreen = ({route}: {route: {params: {postId: number}}}) => {
   const navigation = useNavigation();
@@ -20,27 +20,7 @@ const PostDetailsScreen = ({route}: {route: {params: {postId: number}}}) => {
         paddingHorizontal: sizes.appWidth(1.5),
       }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Pressable
-          onPress={() => navigation.goBack()}
-          style={{
-            flexDirection: 'row',
-            gap: sizes.appWidth(0.62),
-            marginTop: sizes.appHeight(2.5),
-            alignItems: 'center',
-          }}>
-          <ArrowLeft
-            color="#0984E3"
-            style={{fontSize: sizes.appWidth(1.125)}}
-          />
-          <Text
-            style={{
-              color: '#0984E3',
-              fontSize: sizes.appWidth(1.125),
-              fontWeight: '600',
-            }}>
-            Go Back
-          </Text>
-        </Pressable>
+        <BackButton />
 
         <Text
           style={{
