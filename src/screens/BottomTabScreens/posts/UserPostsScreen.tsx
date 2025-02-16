@@ -36,7 +36,11 @@ const UserPostsScreen = ({route}: {route: {params: {userId: number}}}) => {
 
   return (
     <View style={styles.container}>
-      <Navbar lightText="All" text="Posts" />
+      <Navbar
+        lightText="All"
+        text="Posts"
+        onPress={() => navigation.navigate('Welcome', {screen: 'Home'})}
+      />
 
       <FlatList
         data={data}

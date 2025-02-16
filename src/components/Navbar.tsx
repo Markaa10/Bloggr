@@ -1,22 +1,33 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ViewProps} from 'react-native';
 import {Home} from '../../assets/icons';
 import {colors, sizes} from '../../assets/theme';
 
-type NavbarProps = {lightText: string; text: string};
+interface NavbarProps extends ViewProps {
+  lightText: string;
+  text: string;
+  onPress?(): void;
+}
 
-const Navbar = ({lightText, text}: Readonly<NavbarProps>) => {
+const Navbar = ({
+  lightText,
+  onPress,
+  text,
+  ...props
+}: Readonly<NavbarProps>) => {
   const navigation = useNavigation();
+  const onHomeNavigation = () =>
+    navigation.navigate('Welcome', {screen: 'Home'});
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, props?.style]}>
       <View style={styles.textContainer}>
         <Text style={styles.lightText}>{lightText} </Text>
         <Text style={styles.text}>{text}</Text>
       </View>
 
-      <Home onPress={() => navigation.navigate('Home')} />
+      <Home onPress={onHomeNavigation} />
     </View>
   );
 };

@@ -10,7 +10,7 @@ import {colors, fonts, sizes} from '../../assets/theme';
 type Variant = 'outlined' | 'filled' | 'text';
 
 interface ButtonProps extends TouchableOpacityProps {
-  text: string;
+  text?: string;
   variant?: Variant;
   prefixIcon?: ReactNode;
 }
@@ -47,7 +47,7 @@ const Button = ({
         props?.style,
       ]}>
       {prefixIcon}
-      <Text style={styles.textStyle}>{text}</Text>
+      {text && <Text style={styles.textStyle}>{text}</Text>}
     </TouchableOpacity>
   );
 };

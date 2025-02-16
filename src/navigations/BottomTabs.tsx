@@ -1,9 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {AlbumsStackNavigation, PostsStackNavigation} from '.';
 import {Album, CheckSquare, Document} from '../../assets/icons';
-import {UserPostsScreen} from '../screens';
+import {TodosScreen} from '../screens';
 
 export const BottomTabs = createBottomTabNavigator({
   screens: {
@@ -24,13 +23,7 @@ export const BottomTabs = createBottomTabNavigator({
       },
     },
     Todos: {
-      screen: UserPostsScreen,
-      listeners: ({navigation}) => ({
-        tabPress: async () => {
-          const userId = await AsyncStorage.getItem('userId');
-          navigation.navigate('Albums', {userId: JSON.parse(userId as string)});
-        },
-      }),
+      screen: TodosScreen,
       options: {
         tabBarIcon: ({focused}) => (
           <CheckSquare color={focused ? '#333' : '#AAAAAA'} />

@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -8,8 +7,6 @@ import {BackButton, IconContainer} from '../../../components';
 import {useFetchPostDetails} from '../../../hooks';
 
 const PostDetailsScreen = ({route}: {route: {params: {postId: number}}}) => {
-  const navigation = useNavigation();
-
   const {data, isLoading} = useFetchPostDetails(route.params.postId);
 
   return (
